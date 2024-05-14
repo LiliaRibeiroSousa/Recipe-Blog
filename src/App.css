@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+/* styles.css */
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #F1F2EE;
+  font-family: Roboto;
+  background-image: url(./assets/back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.navbar {
+  background-color: #87255B ;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between; 
+  width: 100vw;
+  height:100px;
+  align-items: center;
+
+}
+.logo {
+  
+   display: flex;
+   align-items: center;
+}
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 35px;
+  text-transform: uppercase;
+  font-family: Cinzel;
+  font-weight: 800;
+  text-align: center;
+  width:300px;
+  
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  text-align: right;
+}
+
+nav ul li {
+  margin: 0 25px; 
+  text-transform: uppercase;
+  font-family: Playfair Display;
+  padding:10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* PostList.css */
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 20px;
+  width: 650px;
+}
+
+.post-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.post-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.post-content {
+  padding: 10px;
+}
+
+.post-content h2 {
+  margin-top: 0;
+}
+
+.post-content p {
+  margin-bottom: 0;
+}
+
+
+
+/* PostItem.css */
+
+.post-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.post-content {
+  text-align: left;
+}
+
+.post-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.post-content p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+
+/* PostForm.css ---------------------------------------------*/
+
+.post-form {
+  max-width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 2px 6px rgba(134, 9, 68, 0.547);
+  border-radius: 5px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #49193615;
+}
+
+.post-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.post-form input[type="text"],
+.post-form input[type="url"],
+.post-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.post-form button {
+  display: block;
+  padding: 10px 60px;
+  margin-top: 10px;
+  background-color: #87255B;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3.5px;
+}
+
+.post-form button:hover {
+  background-color: #ef129aa5;
+}
+
+
+/*Sign Up--------------------------------------------------*/
+
+.signUpForm{
+  border: none;
+  border-radius: 5px;
+  width: 400px;
+  box-shadow: 0 2px 6px rgba(134, 9, 68, 0.547);
+  padding: 30px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px auto;
+  background-color: #49193615;
+  
+  
+}
+
+.signUp label{
+  display: block;
+  margin-bottom: 10px;
+}
+
+.signUpForm input[type="text"],
+.signUpForm input[type="password"],
+.signUpForm textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signUpForm button {
+  display: block;
+  padding: 10px 60px;
+  margin-top: 10px;
+  background-color: #87255B;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3.5px;
+}
+
+.signUpForm button:hover {
+  background-color: #e8257db5;
+}
+.signUpTitle{
+  text-align: center;
+  margin-bottom: 25px;
+  color: #272643;
+
+}
+.signUpForm button {
+  background-color: #87255B;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  width: 100px;
+  border-radius: 5px;
+  padding: 10px;
+  border: none
+  
+}
+
+.signUpForm label {
+  margin-bottom: 10px;
+  color: #272643;
+  text-align: left;
+ 
+}
+
+.signUpForm input{
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 5px
+}
+
+
+
+/*Login ---------------------------------------------*/
+
+.loginForm{
+  border: none;
+  border-radius: 5px;
+  width: 400px;
+  box-shadow: 0 2px 6px rgba(134, 9, 68, 0.547);
+  padding: 30px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px auto;
+  background-color: #49193615;
+  
+  
+}
+
+
+.loginForm label{
+  display: block;
+  margin-bottom: 10px;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"],
+.loginForm textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.loginForm button {
+  display: block;
+  padding: 10px 60px;
+  margin-top: 10px;
+  background-color: #87255B;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3.5px;
+}
+
+.signUpForm button:hover {
+  background-color: #e8257db5;
+}
+.loginTitle{
+  text-align: center;
+  margin-bottom: 25px;
+  color: #272643;
+
+}
+.loginForm button {
+  background-color: #87255B;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  width: 100px;
+  border-radius: 5px;
+  padding: 10px;
+  border: none
+  
+}
+
+.loginForm label {
+  margin-bottom: 10px;
+  color: #272643;
+  text-align: left;
+ 
+}
+
+.loginForm input{
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 5px
+}
+
+
+
+
+
+
+
+
+
+
+/*
+7@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  color: white;
+  text-transform: uppercase;
+  background-color: rgba(5, 103, 110, 0.584);
+  width:200px;
+  
+
+}
+
+.navbar ul{
+  display: flex;
+  list-style: none;
+  width: 100%;
+  flex-direction: column;
+  height:100vh;
+  padding: 25px;
+  margin-top: 50px
+  
+}
+
+.navbar ul li{
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  border-bottom: solid 2px white;
+  cursor: pointer;
+}
+
+.navbar ul li:hover{
+  background-color: rgba(38, 228, 241, 0.118);
+}
+
+.navbar h1{
+font-family: Cinzel;
+font-size: 40px;
+text-align: center;
+}
+
+.navbar h2{
+  font-family: Cinzel;
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
+}
+
+.forum-post{
+ 
+  justify-content: center;
+  margin:auto;
+  border: 2px solid rgb(42, 186, 184);
+  width:fit-content;
+  height:200px;
+  padding: 10px;
+}
+
+.forum-post button{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgba(5, 103, 110, 0.584);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}*/
