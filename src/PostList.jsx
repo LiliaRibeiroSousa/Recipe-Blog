@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 const fetchBlogs = async () => {
   const token = localStorage.getItem('token'); // Retrieve the token from local storage
  
-  console.log('Token:', token);
+  console.log('Token', token);
   
   try {
     const response = await fetch('https://salty-temple-86081-1a18659ec846.herokuapp.com/blogs/', {
