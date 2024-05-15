@@ -64,6 +64,9 @@ const SignupForm = () => {
 	})
 	.then((data) => {
 		console.log(data)
+        if (data && data.token) {
+            localStorage.setItem('token', data.token); // Save the token to local storage
+        }
         navigate('/')
 
 	})
