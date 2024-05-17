@@ -37,10 +37,13 @@ const PostList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+
+    
     const fetchData = async () => {
       try {
         setLoading(true);
         const data = await fetchBlogs();
+        console.log('Fetched data : ', data)
         setBlogs(data);
       } catch (err) {
         setError(err);
@@ -49,7 +52,6 @@ const PostList = () => {
       }
     };
 
-    
 
     fetchData();
   }, []);

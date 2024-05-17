@@ -61,10 +61,10 @@ When the form is submitted, the onSubmit function is called with the form data a
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const PostForm = ({ onSubmit }) => {
+  const PostForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  // const [image, setImage] = useState('');
+  const [picture, setPicture] = useState('');
   const [recipeLink, setRecipeLink] = useState('');
   const [category, setCategory] = useState('Breakfast');
   const [rating, setRating] = useState(1);
@@ -73,22 +73,25 @@ const PostForm = ({ onSubmit }) => {
     setCategory(e.target.value);
     setRating(e.target.value === '1'? 1 : e.target.value === '2'? 2 : e.target.value === '3'? 3 : e.target.value === '4'? 4 : 5);
   }
-  /* const handleImageChange = (e) => {
-    setImage(e.target.value);
-  }
- */
+  
+
+  const handleFileChange = (e) => {
+    setPicture(e.target.files[0]); // Capture the selected file
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate form data
-    if (!title ||!description ||!recipeLink ||!category ||!rating) {
+    if (!title ||!description ||!recipeLink ||!category ||!rating ||!picture) {
       alert('Please fill out all required fields.');
       return;
     }
+    
 
     // Prepare form data
     const formData = new FormData();
-    formData.append('picture', document.querySelector('#imageInput').files[0]);
+    formData.append('picture', picture[0]);
     formData.append('link', recipeLink);
     formData.append('content', description);
     formData.append('rating', rating);
@@ -100,25 +103,34 @@ const PostForm = ({ onSubmit }) => {
       const response = await fetch('https://salty-temple-86081-1a18659ec846.herokuapp.com/blogs/', {
         method: 'POST',
         body: formData,
+        headers: {
+          'Authorization': `Token ${localStorage.getItem('token')}` // Include the token in the Authorization header
+        },
       });
-
+  
       if (!response.ok) {
         throw new Error(`HTTP error status: ${response.status}`);
       }
-
+  
       // Handle success
       const data = await response.json();
       console.log(data); // Log the response data
       onSubmit(formData); // Pass the form data to the parent component
+  
+      // Store the token in localStorage if it's not already there
+      if (!localStorage.getItem('token')) {
+        localStorage.setItem('token', data.token);
+      }
     } catch (error) {
       console.error('Error:', error);
       alert('There was an error submitting the form.');
     }
+  
 
     // Clear form fields after submission
     setTitle('');
     setDescription('');
-    // setImage('');
+    setPicture('');
     setRecipeLink('');
     setCategory('Breakfast');
     setRating(5/5);
@@ -138,7 +150,7 @@ const PostForm = ({ onSubmit }) => {
       </label>
       <label>
         Image:
-        <input type="file" id="imageInput" required />
+        <input type="file" id="imageInput" onChange={handleFileChange} required />
       </label>
       <label>
         Recipe Link:

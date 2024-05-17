@@ -1,9 +1,4 @@
 
-
-
-
-
-// App.jsx
 import './App.css'
 import  { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -13,7 +8,6 @@ import PostForm from './PostForm';
 import SignUp from './SignUp'; 
 import Login from './Login';
 import useLocalStorage from './useLocalStorage';
-
 
 
 const App = () => {
@@ -39,9 +33,9 @@ const App = () => {
 
   return (
     <Router>
+     
       <div className="App">
         <Navbar isAuthenticated={isAuthenticated} />
-        
         
         {/* Other components */}
         <Routes>
@@ -52,6 +46,8 @@ const App = () => {
           {/* Add more routes as needed */}
         </Routes>
       </div>
+     
+      
     </Router>
   );
 }
