@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import useLocalStorage from './useLocalStorage'; // Import the useLocalStorage hook
+//import useLocalStorage from './useLocalStorage'; // Import the useLocalStorage hook
 
 const Login = () => {
+
+    
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const [setToken, _] = useLocalStorage('authToken', ''); // Use the useLocalStorage hook
+    //const [setToken, _] = useLocalStorage('authToken', ''); // Use the useLocalStorage hook
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -42,8 +45,11 @@ const Login = () => {
        .then((data) => {
             console.log(data)
             // Store the token in localStorage
-            setToken(data.token); // Assuming the token is returned in the response
-            navigate('/');
+            
+            if(data.token){
+                localStorage.setItem('token', data.token)
+            }
+            navigate('/blogs');
         })
        .catch((error) => {
             console.error('Login failed', error);
