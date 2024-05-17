@@ -1,9 +1,5 @@
 
 import './App.css'
-
-
-
-// App.jsx
 import  { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -37,18 +33,21 @@ const App = () => {
 
   return (
     <Router>
+     
       <div className="App">
         <Navbar isAuthenticated={isAuthenticated} />
-        <PostForm onSubmit={handleFormSubmit} />
         
         {/* Other components */}
         <Routes>
-           <Route path="/blogs" element={ <PostList posts={posts} />} /> 
+          <Route path="/blogs" element={ <PostList posts={posts} />} /> 
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={ <Login setToken={setToken} />}/> 
+          <Route path="/new" element={ <PostForm onSubmit={handleFormSubmit} />} />
           {/* Add more routes as needed */}
         </Routes>
       </div>
+     
+      
     </Router>
   );
 }

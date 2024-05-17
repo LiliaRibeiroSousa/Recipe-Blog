@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 
 
     
-
-
 const SignupForm = () => {
     const [username, setUsername] = useState('');
     //const [email, setEmail] = useState('');
@@ -28,21 +26,6 @@ const SignupForm = () => {
         
         const apiUrl = "https://salty-temple-86081-1a18659ec846.herokuapp.com/signup/";
 
-    // try {
-    //     const response = await axios.post(apiUrl, {
-            
-    //             username,
-                
-    //             password,
-            
-    //     });
-    //     console.log('Sign Up Successfull', response.data);
-        
-            
-    // } catch (error) {
-    //     console.error('Signup failed', error);
-        
-    // }
 
 
     fetch(apiUrl, {
@@ -63,9 +46,9 @@ const SignupForm = () => {
 		}
 	})
 	.then((data) => {
-		console.log(data)
-        if (data && data.token) {
-            localStorage.setItem('token', data.token); // Save the token to local storage
+	console.log(data)
+        if(data.token){
+            localStorage.setItem('token', data.token)
         }
         navigate('/')
 
