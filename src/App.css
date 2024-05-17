@@ -423,9 +423,77 @@ nav ul li a {
 
 }
 
+/* ViewBlog ----------------------------------------------------------------------------------------------------------*/
 
+.blog{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.blogCard{
+  background-color: rgba(255, 255, 255, 0.727);
+  width: 90%;
+  padding: 20px;
+}
 
+.blogCard .author{
+  color: rgba(0, 0, 0, 0.585);
+  font-style: italic;
+}
+
+.datePosted{
+  color: rgba(0, 0, 0, 0.527);
+  font-size: .8rem;
+}
+
+.recipeRating{
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.recipeRating .star{
+  height: 30px;
+  width: auto;
+}
+
+.recipeImage{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.recipeImage img{
+  height: 500px;
+  width: auto;
+}
+
+.recipeLink{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.recipeLink a{
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 2px;
+}
+
+.blogContentContainer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.blogContent{
+  width: 80%;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 1.2rem;
+}
 
 
 /*
