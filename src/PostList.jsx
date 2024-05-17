@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 const fetchBlogs = async () => {
   const token = localStorage.getItem('token'); // Retrieve the token from local storage
  
-  console.log('Token', token);
+  console.log('Token:', token);
   
   try {
     const response = await fetch('https://salty-temple-86081-1a18659ec846.herokuapp.com/blogs/', {
@@ -37,10 +37,13 @@ const PostList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+
+    
     const fetchData = async () => {
       try {
         setLoading(true);
         const data = await fetchBlogs();
+        console.log('Fetched data : ', data)
         setBlogs(data);
       } catch (err) {
         setError(err);
@@ -49,7 +52,6 @@ const PostList = () => {
       }
     };
 
-    
 
     fetchData();
   }, []);
@@ -58,18 +60,21 @@ const PostList = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div>
+    <div className="container">
       {blogs.map(blog => (
-        <div key={blog.id}>
-          <img src={blog.picture} alt={blog.title} />
-          <h2>{blog.title}</h2>
-          <p>{blog.content}</p>
-          <p>Rating: {blog.rating}</p>
-          <p>Category: {blog.category}</p>
-          <p>Author: {blog.author}</p>
-          <p>Author Username: {blog.author_username}</p>
-          <p>Timestamp: {new Date(blog.timestamp).toLocaleString()}</p>
-          <a href={blog.link}>Read More</a>
+        <div className="post-wrapper" key={blog.id}>
+          <h2 className="title">{blog.title}</h2>
+          <img className="image" src={`https://res.cloudinary.com/dlctj1zzp/${blog.picture}`} alt={blog.title} />
+          <p className="content">{blog.content}</p>
+          
+          <p className="category">Category: {blog.category}</p>
+          <div className="author-info">
+            {/* <span>Author: {blog.author}</span> */}
+            <span>User: {blog.author_username}</span>
+          </div>
+          <p className="timestamp">Posted on: {new Date(blog.timestamp).toLocaleString()}</p>
+          <p className="rating">Rating: {blog.rating}</p>
+          <a href={blog.link} className="read-more-link">Read More</a>
         </div>
       ))}
     </div>

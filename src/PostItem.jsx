@@ -3,18 +3,18 @@
 
 import PropTypes from 'prop-types';
 
-const PostItem = ({ post }) => {
+const PostItem = ({ blog }) => {
 
     
   return (
     <div className="post-item">
         
-      <img src={post.image} alt={post.title} />
+      <img src={blog.picture} alt={blog.title} />
       <div className="post-content">
-        <h2>{post.title}</h2>
-        <p>{post.description}</p>
-        <p>{post.category}</p>
-        <p>Rating: {post.rating}</p>
+        <h2>{blog.title}</h2>
+        <p>{blog.description}</p>
+        <p>{blog.category}</p>
+        <p>Rating: {blog.rating}</p>
         {/* Additional information or actions */}
       </div>
     </div>
@@ -22,10 +22,10 @@ const PostItem = ({ post }) => {
 };
 
 PostItem.propTypes = {
-  post: PropTypes.shape({
+  blog: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,

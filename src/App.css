@@ -144,7 +144,13 @@ nav ul li a {
   justify-content: space-around;
   background-color: #49193615;
 }
-
+.post-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #87255B;
+  text-transform: uppercase;
+  font-weight: 800;
+}
 .post-form label {
   display: block;
   margin-bottom: 10px;
@@ -232,8 +238,9 @@ nav ul li a {
 .signUpTitle{
   text-align: center;
   margin-bottom: 25px;
-  color: #272643;
-
+  color: #87255B;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 .signUpForm button {
   background-color: #87255B;
@@ -317,8 +324,9 @@ nav ul li a {
 .loginTitle{
   text-align: center;
   margin-bottom: 25px;
-  color: #272643;
-
+  color: #87255B;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 .loginForm button {
   background-color: #87255B;
@@ -346,9 +354,74 @@ nav ul li a {
   margin-left: 5px
 }
 
+/* PostList.css ----------------------------------------------------------------------------------------------------------*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 60px;
+  
+}
 
+.post-wrapper {
+  background-color: #f9f9f9c7;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
 
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
 
+.title {
+  margin-top: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.content {
+  margin-top: 10px;
+  color: #666;
+}
+
+.rating {
+  margin-top: 10px;
+  color: #999;
+}
+
+.category {
+  margin-top: 10px;
+  color: #999;
+}
+
+.author-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.timestamp {
+  color: #999;
+}
+
+.read-more-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.read-more-link:hover {
+  text-decoration: underline;
+
+}
 
 
 
