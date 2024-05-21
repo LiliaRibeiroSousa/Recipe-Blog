@@ -5,6 +5,7 @@
 
 //import PostItem from './PostItem';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const fetchBlogs = async () => {
   const token = localStorage.getItem('token'); // Retrieve the token from local storage
@@ -65,7 +66,7 @@ const PostList = () => {
         <div className="post-wrapper" key={blog.id}>
           <h2 className="title">{blog.title}</h2>
           <img className="image" src={`https://res.cloudinary.com/dlctj1zzp/${blog.picture}`} alt={blog.title} />
-          <p className="content">{blog.content}</p>
+          <p className="content">{blog.content.split(" ").slice(0, 10).join(" ") + "..."}</p>
           
           <p className="category">Category: {blog.category}</p>
           <div className="author-info">
@@ -74,7 +75,7 @@ const PostList = () => {
           </div>
           <p className="timestamp">Posted on: {new Date(blog.timestamp).toLocaleString()}</p>
           <p className="rating">Rating: {blog.rating}</p>
-          <a href={blog.link} className="read-more-link">Read More</a>
+          <Link to={`/blogs/${blog.id}`} className="read-more-link">Read More</Link>
         </div>
       ))}
     </div>

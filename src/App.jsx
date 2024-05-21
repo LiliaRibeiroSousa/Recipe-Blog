@@ -8,6 +8,7 @@ import PostForm from './PostForm';
 import SignUp from './SignUp'; 
 import Login from './Login';
 import useLocalStorage from './useLocalStorage';
+import ViewBlog from './ViewBlog';
 
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={ <Login setToken={setToken} />}/> 
           <Route path="/new" element={ <PostForm onSubmit={handleFormSubmit} />} />
+          <Route path="/blogs/:id" element={<ViewBlog />} />
           {/* Add more routes as needed */}
         </Routes>
       </div>

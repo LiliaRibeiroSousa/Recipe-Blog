@@ -423,9 +423,173 @@ nav ul li a {
 
 }
 
+/* ViewBlog ----------------------------------------------------------------------------------------------------------*/
 
+.blog{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.blogCard{
+  background-color: rgba(255, 255, 255, 0.727);
+  width: 90%;
+  padding: 20px;
+}
 
+.blogCard .author{
+  color: rgba(0, 0, 0, 0.585);
+  font-style: italic;
+}
+
+.datePosted{
+  color: rgba(0, 0, 0, 0.527);
+  font-size: .8rem;
+}
+
+.recipeRating{
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.recipeRating .star{
+  height: 30px;
+  width: auto;
+}
+
+.recipeImage{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.recipeImage img{
+  height: 500px;
+  width: auto;
+}
+
+.recipeLink{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.recipeLink a{
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 2px;
+}
+
+.blogContentContainer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.blogContent{
+  width: 80%;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 1.2rem;
+}
+
+/* Comment Section */
+
+.commentSection{
+  width: 90%;
+  margin-top: 20px;
+}
+
+.commentList{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.comment{
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.727);
+  padding: 10px;
+}
+
+.commentAuthor{
+  font-weight: 600;
+}
+
+.commentTime{
+  font-size: .8rem;
+  color: rgba(0, 0, 0, 0.527);
+  font-style: italic;
+}
+
+.commentContent{
+  margin-top: 5px;
+  font-size: 1.1em;
+}
+
+.editAndDelete{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+  font-size: .9rem;
+}
+
+.edit{
+  margin-right: 30px;
+  color: #87255B;
+  cursor: pointer;
+}
+
+.edit:hover{
+  text-decoration: underline;
+}
+
+.delete{
+  color: rgb(215, 4, 4);
+  cursor: pointer;
+}
+
+.delete:hover{
+  text-decoration: underline;
+}
+
+.commentForm{
+  margin-top: 10px;
+}
+
+.commentForm form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commentForm textarea{
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 1.1em;
+  width: 100%;
+}
+
+.commentForm button{
+  padding: 5px;
+  background-color: #87255B;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  width: 10%;
+  height: 30px;
+}
+
+.commentForm button:hover{
+  background-color: #e8257db5;
+}
+
+.commentForm button:active{
+  background-color: #272643;
+}
 
 
 /*
