@@ -74,7 +74,13 @@ const PostList = () => {
             <span>User: {blog.author_username}</span>
           </div>
           <p className="timestamp">Posted on: {new Date(blog.timestamp).toLocaleString()}</p>
-          <p className="rating">Rating: {blog.rating}</p>
+          <div className="recipeRating">
+                    <img src={blog.rating >= 1 ? '../icons/icons8-star-50(1).png' : '../icons/icons8-star-50.png'} alt="hi" className="star" />
+                    <img src={blog.rating >= 2 ? '../icons/icons8-star-50(1).png' : '../icons/icons8-star-50.png'} alt="hi" className="star" />
+                    <img src={blog.rating >= 3 ? '../icons/icons8-star-50(1).png' : '../icons/icons8-star-50.png'} alt="hi" className="star" />
+                    <img src={blog.rating >= 4 ? '../icons/icons8-star-50(1).png' : '../icons/icons8-star-50.png'} alt="hi" className="star" />
+                    <img src={blog.rating == 5 ? '../icons/icons8-star-50(1).png' : '../icons/icons8-star-50.png'} alt="hi" className="star" />
+          </div>
           <Link to={`/blogs/${blog.id}`} className="read-more-link">Read More</Link>
         </div>
       ))}
