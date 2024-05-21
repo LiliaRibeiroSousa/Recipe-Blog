@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
+import Comments from "./Comments";
 
 
 export default function ViewBlog() {
@@ -61,8 +62,10 @@ export default function ViewBlog() {
           <p>Loading...</p>
         )}
       </div>
-      <div className="commentHeader">
-        <h2>Comments</h2>
+      <div className="commentSection">
+        <Routes>
+          <Route index element={<Comments />} />
+        </Routes>
       </div>
     </div>
   );
