@@ -7,6 +7,31 @@ export default function ViewBlog() {
     const token = localStorage.getItem('token'); 
     const { id } = useParams();
     const [blog, setBlog] = useState(null);
+    // const [userId, setUserId] = useState(null);
+
+    // useEffect(() => {
+    //     const fetchUserData = async () => {
+    //         try {
+    //             const response = await fetch(`https://salty-temple-86081-1a18659ec846.herokuapp.com/users/`, {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Token ${token}`
+    //                 },
+    //             });
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+    //             const data = await response.json();
+    //             console.log('User data:', data);
+    //             setUserId(data.id);
+    //         } catch (error) {
+    //             console.error('Error fetching user:', error);
+    //         }
+    //     }
+    //     fetchUserData();
+    // }, [token])
+
 
     useEffect(() => {
         const fetchBlogData = async () => {
@@ -30,6 +55,53 @@ export default function ViewBlog() {
         }
         fetchBlogData();
     }, [token, id])
+
+    const handleDeleteBlog = async (id) => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this blog?');
+        if (!confirmDelete) {
+            return;
+        }
+        try {
+            const response = await fetch(`https://salty-temple-86081-1a18659ec846.herokuapp.com/blogs/${id}/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('Blog deleted successfully');
+        } catch (error) {
+            console.error('Error deleting blog:', error);
+        }
+    }
+
+    const handleEditBlog = async (id) => {
+        try {
+            const newContent = prompt('Enter the new content for the blog:');
+            if (!newContent) {
+                return;
+            }
+            const response = await fetch(`https://salty-temple-86081-1a18659ec846.herokuapp.com/blogs/${id}/`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                },
+                body: JSON.stringify({ content: newContent })
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('Blog edited successfully');
+            const updatedBlog = { ...blog, content: newContent };
+            setBlog(updatedBlog);
+        }catch (error) {
+            console.error('Error editing blog:', error);
+        }
+    }
 
 
   return (
@@ -56,6 +128,10 @@ export default function ViewBlog() {
                 </p>
                 <div className="blogContentContainer">
                     <p className="blogContent">{blog.content}</p>
+                </div>
+                <div className="editAndDelete">
+                    <p className="edit" onClick={() => handleEditBlog(blog.id)}>Edit</p>
+                    <p className="delete" onClick={() => handleDeleteBlog(blog.id)}>Delete</p>
                 </div>
             </>
         ) : (
