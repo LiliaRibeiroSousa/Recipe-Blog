@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-export default function Comments() {
+export default function Comments({ userId }) {
     const token = localStorage.getItem('token'); 
     const { id } = useParams();
     const [comments, setComments] = useState(null);
@@ -87,12 +87,12 @@ export default function Comments() {
         }
     }
 
-    const handleEditComment = async (id) => { //I think I need to make some changes to the back end for this to work. I'll test on postman later.
+    const handleEditComment = async (id, blog_id) => { //I think I need to make some changes to the back end for this to work. I'll test on postman later.
         try {
             const newContent = prompt('Enter the new comment content:');
             const response = await fetch(`https://salty-temple-86081-1a18659ec846.herokuapp.com/comments/${id}/`, {
                 method: 'PUT',
-                body: JSON.stringify({ content: newContent }),
+                body: JSON.stringify({ content: newContent, blog_id }),
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ${token}`
@@ -134,8 +134,8 @@ export default function Comments() {
                             <p className="commentAuthor">{comment.author_username}</p>
                             <p className="commentTime">{new Date (comment.timestamp).toLocaleString()}</p>
                             <p className="commentContent">{comment.content}</p>
-                            <div className="editAndDelete">
-                                <p className="edit" onClick={() => handleEditComment(comment.id)}>Edit</p>
+                            <div className="editAndDelete" style={{display: comment.author === userId ? 'flex' : 'none'}}>
+                                <p className="edit" onClick={() => handleEditComment(comment.id, comment.blog_id)}>Edit</p>
                                 <p className="delete" onClick={() => handleDeleteComment(comment.id)}>Delete</p>
                             </div>
                         </div>
