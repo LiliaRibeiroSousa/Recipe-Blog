@@ -1,5 +1,5 @@
 
-import { Link, NavLink } from 'react-router-dom'; // If you're using React Router for navigation
+import { Link, NavLink } from 'react-router-dom'; 
 
 const Navbar = () => {
 
@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="header">
         <nav className='navbar'>
             <div className="logo">
-            <Link to="/">Our Food Blog</Link> {/* Assuming you have a homepage */}
+            <Link to="/">Tasty Tales</Link> 
             </div>
             <ul>
             <li><NavLink to="/new">New Post</NavLink></li>

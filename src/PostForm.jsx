@@ -1,97 +1,44 @@
-// PostForm.js
 
-/*import  { useState } from 'react';
+
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 const PostForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
-  const [recipeLink, setRecipeLink] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Validate form fields here
-    // Call onSubmit function with form data
-    onSubmit({ title, description, image, recipeLink });
-    // Clear form fields
-    setTitle('');
-    setDescription('');
-    setImage('');
-    setRecipeLink('');
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="post-form">
-      <label>
-        Recipe Title:
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
-      </label>
-      <label>
-        Description:
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
-      </label>
-      <label>
-        Image URL:
-        <input type="url" value={image} onChange={(e) => setImage(e.target.value)} required />
-      </label>
-      <label>
-        Recipe Link:
-        <input type="url" value={recipeLink} onChange={(e) => setRecipeLink(e.target.value)} />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
-
-PostForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-export default PostForm;
-*/
-
-
-/**In this component:
-
-We use the useState hook to manage the form state (title, description, image, recipeLink).
-The form fields are controlled components, meaning their values are controlled by state and updated through onChange handlers.
-When the form is submitted, the onSubmit function is called with the form data as an argument. */
-
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-
-  const PostForm = ({ onSubmit }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [picture, setPicture] = useState('');
+  const [picture, setPicture] = useState(null);
   const [recipeLink, setRecipeLink] = useState('');
   const [category, setCategory] = useState('Breakfast');
   const [rating, setRating] = useState(1);
 
-  const handleChange = (e) => {
+  const navigate = useNavigate(); 
+
+  const handleCategoryChange = (e) => {
     setCategory(e.target.value);
-    setRating(e.target.value === '1'? 1 : e.target.value === '2'? 2 : e.target.value === '3'? 3 : e.target.value === '4'? 4 : 5);
-  }
-  
+  };
+
+  const handleRatingChange = (e) => {
+    setRating(parseInt(e.target.value));
+  };
 
   const handleFileChange = (e) => {
-    setPicture(e.target.files[0]); // Capture the selected file
+    setPicture(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate form data
-    if (!title ||!description ||!recipeLink ||!category ||!rating ||!picture) {
+    if (!title || !description || !recipeLink || !category || !rating || !picture) {
       alert('Please fill out all required fields.');
       return;
     }
-    
 
     // Prepare form data
     const formData = new FormData();
-    formData.append('picture', picture[0]);
+    formData.append('picture', picture);
     formData.append('link', recipeLink);
     formData.append('content', description);
     formData.append('rating', rating);
@@ -107,33 +54,34 @@ import PropTypes from 'prop-types';
           'Authorization': `Token ${localStorage.getItem('token')}` // Include the token in the Authorization header
         },
       });
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error status: ${response.status}`);
       }
-  
+
       // Handle success
       const data = await response.json();
       console.log(data); // Log the response data
       onSubmit(formData); // Pass the form data to the parent component
-  
+
       // Store the token in localStorage if it's not already there
       if (!localStorage.getItem('token')) {
         localStorage.setItem('token', data.token);
       }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('There was an error submitting the form.');
-    }
-  
+    // Redirect to blogs page
+    navigate('/blogs');
+  } catch (error) {
+    console.error('Error:', error);
+    alert('There was an error submitting the form.');
+  }
 
     // Clear form fields after submission
     setTitle('');
     setDescription('');
-    setPicture('');
+    setPicture(null);
     setRecipeLink('');
     setCategory('Breakfast');
-    setRating(5/5);
+    setRating(1);
   };
 
   return (
@@ -145,7 +93,7 @@ import PropTypes from 'prop-types';
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
       </label>
       <label>
-       Review:
+        Review:
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
       </label>
       <label>
@@ -158,24 +106,24 @@ import PropTypes from 'prop-types';
       </label>
       <label>
         Category:
-        <select value={category} onChange={handleChange}>
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-          <option value="dessert">Dessert</option>
-          <option value="appetizers">Appetizers</option>
-          <option value="gluten-free">Gluten-Free</option>
-          <option value="vegan">Vegan</option>
+        <select value={category} onChange={handleCategoryChange}>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Appetizers">Appetizers</option>
+          <option value="Gluten-Free">Gluten-Free</option>
+          <option value="Vegan">Vegan</option>
         </select>
       </label>
       <label>
         Rating:
-        <select value={rating} onChange={handleChange}>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <select value={rating} onChange={handleRatingChange}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
       </label>
       <button type="submit">Post</button>

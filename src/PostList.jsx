@@ -1,7 +1,4 @@
 
-// PostList.js
-
-
 
 //import PostItem from './PostItem';
 import { useState, useEffect } from 'react';
@@ -91,15 +88,3 @@ const PostList = () => {
 export default PostList;
 
 
-/**In this example, the PostList component 
- Explanation
-fetchBlogs Function: This function is responsible for fetching the data from the 'blogs/' endpoint.
- It uses the fetch API to make a GET request and parses the response as JSON.
-useState Hook: The useState hook is used to manage the state of the blogs data, loading status,
- and any errors that might occur during the fetch operation.
-useEffect Hook: The useEffect hook is used to call the fetchBlogs function when the component mounts. 
-It also handles setting the loading state to false and any errors that occur during the fetch operation.
-Conditional Rendering: The component conditionally renders a loading message, an error message, or the list of blogs based on the current state.
-This setup should give you a functional PostList component that fetches and displays blog posts from the specified endpoint.
-
- */

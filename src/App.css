@@ -40,7 +40,7 @@ body{
   font-family: Cinzel;
   font-weight: 800;
   text-align: center;
-  width:300px;
+  width:200px;
   
 }
 
@@ -600,84 +600,36 @@ nav ul li a.active{
 }
 
 
-/*
-7@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+/* Homepage */
 
-
-
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-
+.homepage {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(134, 9, 68, 0.547);
+  border-radius: 5px;
+  width: 500px;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  color: white;
+.homepage h1 {
+  color: #87255B;
   text-transform: uppercase;
-  background-color: rgba(5, 103, 110, 0.584);
-  width:200px;
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.homepage p {
+  font-family: 'Playfair Display', serif;
+  color: #666;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.homepage p a {
+  color: #87255B;
   
-
+  font-weight: 700;
 }
-
-.navbar ul{
-  display: flex;
-  list-style: none;
-  width: 100%;
-  flex-direction: column;
-  height:100vh;
-  padding: 25px;
-  margin-top: 50px
-  
-}
-
-.navbar ul li{
-  padding: 1rem;
-  text-align: center;
-  width: 100%;
-  border-bottom: solid 2px white;
-  cursor: pointer;
-}
-
-.navbar ul li:hover{
-  background-color: rgba(38, 228, 241, 0.118);
-}
-
-.navbar h1{
-font-family: Cinzel;
-font-size: 40px;
-text-align: center;
-}
-
-.navbar h2{
-  font-family: Cinzel;
-  font-size: 20px;
-  text-align: center;
-  font-style: italic;
-}
-
-.forum-post{
- 
-  justify-content: center;
-  margin:auto;
-  border: 2px solid rgb(42, 186, 184);
-  width:fit-content;
-  height:200px;
-  padding: 10px;
-}
-
-.forum-post button{
-  margin-top: 10px;
-  padding: 10px;
-  background-color: rgba(5, 103, 110, 0.584);
-  color: white;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-}*/

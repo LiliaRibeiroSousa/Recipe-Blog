@@ -9,6 +9,7 @@ import SignUp from './SignUp';
 import Login from './Login';
 import useLocalStorage from './useLocalStorage';
 import ViewBlog from './ViewBlog';
+import Homepage from './Homepage';
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
         
         {/* Other components */}
         <Routes>
+          <Route path="/" element={<Homepage />} />
           <Route path="/blogs" element={ <PostList posts={posts} />} /> 
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={ <Login setToken={setToken} />}/> 
