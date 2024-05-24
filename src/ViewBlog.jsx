@@ -23,7 +23,7 @@ export default function ViewBlog() {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                console.log('User data:', data);
+                // console.log('User data:', data);
                 setUserId(data.id);
             } catch (error) {
                 console.error('Error fetching user:', error);
@@ -47,7 +47,7 @@ export default function ViewBlog() {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                console.log('Blog data:', data);
+                // console.log('Blog data:', data);
                 setBlog(data);
             } catch (error) {
                 console.error('Error fetching blog:', error);
