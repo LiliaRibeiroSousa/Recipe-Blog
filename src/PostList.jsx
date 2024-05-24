@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const fetchBlogs = async () => {
   const token = localStorage.getItem('token'); // Retrieve the token from local storage
  
-  console.log('Token:', token);
+  // console.log('Token:', token);
   
   try {
     const response = await fetch('https://salty-temple-86081-1a18659ec846.herokuapp.com/blogs/', {
@@ -44,7 +44,7 @@ const PostList = () => {
       try {
         setLoading(true);
         const data = await fetchBlogs();
-        console.log('Fetched data : ', data)
+        // console.log('Fetched data : ', data)
         setBlogs(data);
       } catch (err) {
         setError(err);

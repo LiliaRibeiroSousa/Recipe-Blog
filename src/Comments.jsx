@@ -21,7 +21,7 @@ export default function Comments({ userId }) {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                console.log('Comments data:', data);
+                // console.log('Comments data:', data);
                 setComments(data);
             } catch (error) {
                 console.error('Error fetching comments:', error);
@@ -55,7 +55,7 @@ export default function Comments({ userId }) {
                 throw new Error(`HTTP error status: ${response.status}`);
             }
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setContent('');
 
             // Add the new comment to the comments state
