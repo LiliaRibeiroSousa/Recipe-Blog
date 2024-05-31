@@ -23,7 +23,7 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   // Handle form submission
   const handleFormSubmit = (formData) => {
-    console.log('Form submitted with data:', formData);
+    // console.log('Form submitted with data:', formData);
     // TODO: Send the form data to a server
 
     // Example of adding a new post
@@ -46,7 +46,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={ <Login setToken={setToken} />}/> 
           <Route path="/new" element={ <PostForm onSubmit={handleFormSubmit} />} />
-          <Route path="/blogs/:id" element={<ViewBlog />} />
+          <Route path="/blogs/:id/*" element={<ViewBlog />} />
           {/* Add more routes as needed */}
         </Routes>
       </div>

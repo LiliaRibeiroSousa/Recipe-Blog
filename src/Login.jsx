@@ -8,6 +8,7 @@ const Login = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(false);
     const navigate = useNavigate();
     //const [setToken, _] = useLocalStorage('authToken', ''); // Use the useLocalStorage hook
 
@@ -43,25 +44,31 @@ const Login = () => {
             }
         })
        .then((data) => {
-            console.log(data)
+            // console.log(data)
             // Store the token in localStorage
             
             if(data.token){
                 localStorage.setItem('token', data.token)
+                navigate('/blogs');
+                setError(false);
             }
-            navigate('/blogs');
+            if(!data.token){
+                setError(true);
+            }
         })
        .catch((error) => {
             console.error('Login failed', error);
+            setError(true);
         });
 
-        console.log('Username:', username);
-        console.log('Password:', password);
+        // console.log('Username:', username);
+        // console.log('Password:', password);
     }
 
     return (
         <div className='loginForm'>
             <h2 className='loginTitle'>Login</h2>
+            {error && <p className='error'>Login failed. Please try again.</p>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>

@@ -61,7 +61,7 @@ const PostForm = ({ onSubmit }) => {
 
       // Handle success
       const data = await response.json();
-      console.log(data); // Log the response data
+      // console.log(data); // Log the response data
       onSubmit(formData); // Pass the form data to the parent component
 
       // Store the token in localStorage if it's not already there

@@ -7,30 +7,30 @@ export default function ViewBlog() {
     const token = localStorage.getItem('token'); 
     const { id } = useParams();
     const [blog, setBlog] = useState(null);
-    // const [userId, setUserId] = useState(null);
+    const [userId, setUserId] = useState(null);
 
-    // useEffect(() => {
-    //     const fetchUserData = async () => {
-    //         try {
-    //             const response = await fetch(`https://salty-temple-86081-1a18659ec846.herokuapp.com/users/`, {
-    //                 method: 'GET',
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Authorization': `Token ${token}`
-    //                 },
-    //             });
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             const data = await response.json();
-    //             console.log('User data:', data);
-    //             setUserId(data.id);
-    //         } catch (error) {
-    //             console.error('Error fetching user:', error);
-    //         }
-    //     }
-    //     fetchUserData();
-    // }, [token])
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch(`https://salty-temple-86081-1a18659ec846.herokuapp.com/user/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Token ${token}`
+                    },
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                // console.log('User data:', data);
+                setUserId(data.id);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        }
+        fetchUserData();
+    }, [token])
 
 
     useEffect(() => {
@@ -47,7 +47,7 @@ export default function ViewBlog() {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                console.log('Blog data:', data);
+                // console.log('Blog data:', data);
                 setBlog(data);
             } catch (error) {
                 console.error('Error fetching blog:', error);
@@ -78,7 +78,7 @@ export default function ViewBlog() {
         }
     }
 
-    const handleEditBlog = async (id) => {
+    const handleEditBlog = async (id, picture, link, rating, category, title) => {
         try {
             const newContent = prompt('Enter the new content for the blog:');
             if (!newContent) {
@@ -90,7 +90,7 @@ export default function ViewBlog() {
                     'Content-Type': 'application/json',
                     'Authorization': `Token ${token}`
                 },
-                body: JSON.stringify({ content: newContent })
+                body: JSON.stringify({ content: newContent, picture, link, rating, category, title})
             });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -129,8 +129,8 @@ export default function ViewBlog() {
                 <div className="blogContentContainer">
                     <p className="blogContent">{blog.content}</p>
                 </div>
-                <div className="editAndDelete">
-                    <p className="edit" onClick={() => handleEditBlog(blog.id)}>Edit</p>
+                <div className="editAndDelete" style={{display: blog.author === userId ? 'flex' : 'none' }}>
+                    <p className="edit" onClick={() => handleEditBlog(blog.id, blog.picture, blog.link, blog.rating, blog.category, blog.title)}>Edit</p>
                     <p className="delete" onClick={() => handleDeleteBlog(blog.id)}>Delete</p>
                 </div>
             </>
@@ -140,7 +140,7 @@ export default function ViewBlog() {
       </div>
       <div className="commentSection">
         <Routes>
-          <Route index element={<Comments />} />
+          <Route index element={<Comments userId={userId} />} />
         </Routes>
       </div>
     </div>

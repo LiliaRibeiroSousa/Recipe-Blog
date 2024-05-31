@@ -7,6 +7,7 @@ const SignupForm = () => {
     const [username, setUsername] = useState('');
     //const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     const handleUsernameChange = (e) => {
@@ -49,16 +50,20 @@ const SignupForm = () => {
 	console.log(data)
         if(data.token){
             localStorage.setItem('token', data.token)
+            navigate('/')
+        }else if(!username){
+            setErrors({username: 'Username is required'})
+        }else if(!password){
+            setErrors({password: 'Password is required'})
         }
-        navigate('/')
 
 	})
 
 
 
-        console.log('Username:', username);
+        // console.log('Username:', username);
         //console.log('Email:', email);
-        console.log('Password:', password);
+        // console.log('Password:', password);
     };
 
    
@@ -67,6 +72,8 @@ const SignupForm = () => {
         <div className='signUp'>
             <form className="signUpForm" onSubmit={handleSubmit}>
             <h2 className='signUpTitle'>Sign Up</h2>
+            {errors.username && <p className='error'>{errors.username}</p>}
+            {errors.password && <p className='error'>{errors.password}</p>}
             <label>
                 Username:
                 <input  type="text" value={username} onChange={handleUsernameChange} />
