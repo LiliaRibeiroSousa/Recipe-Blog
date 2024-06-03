@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const fetchBlogs = async () => {
   const token = localStorage.getItem('token'); 
@@ -29,13 +29,17 @@ const PostList = () => {
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
 
     const token = localStorage.getItem('token');
     if (token) {
       setIsLoggedIn(true);
+    }else {
+      navigate('/');
     }
+
 
     const fetchData = async () => {
       try {
