@@ -83,7 +83,7 @@ const PostList = () => {
           </div>
           <p className="timestamp">Posted on: {new Date(blog.timestamp).toLocaleString()}</p>
           <div className="recipeRating">
-            <img src={blog.rating >= 1 ? 'src/icons/icons8-star-50(1).png' : 'src/icons/icons8-star-50.png'} alt="star" className="star" />
+            <img src={blog.rating >= 1 ? 'src/assets/icons8-star-50(1).png' : 'src/assets/icons8-star-50.png'} alt="star" className="star" />
             <img src={blog.rating >= 2 ? 'src/icons/icons8-star-50(1).png' : 'src/icons/icons8-star-50.png'} alt="star" className="star" />
             <img src={blog.rating >= 3 ? 'src/icons/icons8-star-50(1).png' : 'src/icons/icons8-star-50.png'} alt="star" className="star" />
             <img src={blog.rating >= 4 ? 'src/icons/icons8-star-50(1).png' : 'src/icons/icons8-star-50.png'} alt="star" className="star" />
