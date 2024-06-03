@@ -28,8 +28,15 @@ const PostList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -58,6 +65,7 @@ const PostList = () => {
 
   return (
     <div className="container">
+      {isLoggedIn && (  
       <div className="category-filter">
         <label htmlFor="category">Sort by Category:</label>
         <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
@@ -72,6 +80,7 @@ const PostList = () => {
           <option value="Vegan">Vegan</option>
         </select>
       </div>
+      )}
       {filteredBlogs.map(blog => (
         <div className="post-wrapper" key={blog.id}>
           <h2 className="title">{blog.title}</h2>

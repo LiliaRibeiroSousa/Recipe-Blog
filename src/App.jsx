@@ -32,6 +32,9 @@ const App = () => {
     setPosts([...posts, newPost]);
     alert('Recipe posted successfully!');
   };
+  
+
+
 
   return (
     <Router>
@@ -39,7 +42,7 @@ const App = () => {
       <div className="App">
         <Navbar isAuthenticated={isAuthenticated} />
         
-        {/* Other components */}
+        
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/blogs" element={ <PostList posts={posts} />} /> 
@@ -47,7 +50,7 @@ const App = () => {
           <Route path="/login" element={ <Login setToken={setToken} />}/> 
           <Route path="/new" element={ <PostForm onSubmit={handleFormSubmit} />} />
           <Route path="/blogs/:id/*" element={<ViewBlog />} />
-          {/* Add more routes as needed */}
+          
         </Routes>
       </div>
      
