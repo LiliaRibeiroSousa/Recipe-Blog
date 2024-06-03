@@ -83,12 +83,12 @@ const PostList = () => {
           </div>
           <p className="timestamp">Posted on: {new Date(blog.timestamp).toLocaleString()}</p>
           <div className="recipeRating">
-          <img src={blog.rating >= 1 ? '/icons8-star-50(1).png' : '/icons8-star-50.png'} alt="star" className="star" />
+          <img src={blog.rating >= 1 ? 'images/icons8-star-50(1).png' : 'images/icons8-star-50.png'} alt="star" className="star" />
 
-            <img src={blog.rating >= 2 ? '/icons8-star-50(1).png' : '/icons8-star-50.png'} alt="star" className="star" />
-            <img src={blog.rating >= 3 ?'/icons8-star-50(1).png' : '/icons8-star-50.png'} alt="star" className="star" />
-            <img src={blog.rating >= 4 ? '/icons8-star-50(1).png' : '/icons8-star-50.png'} alt="star" className="star" />
-            <img src={blog.rating == 5 ? '/icons8-star-50(1).png' : '/icons8-star-50.png'} alt="star" className="star" />
+            <img src={blog.rating >= 2 ? 'images/icons8-star-50(1).png' : 'images/icons8-star-50.png'} alt="star" className="star" />
+            <img src={blog.rating >= 3 ?'images/icons8-star-50(1).png' : 'images/icons8-star-50.png'} alt="star" className="star" />
+            <img src={blog.rating >= 4 ? 'images/icons8-star-50(1).png' : 'images/icons8-star-50.png'} alt="star" className="star" />
+            <img src={blog.rating == 5 ? 'images/icons8-star-50(1).png' : 'images/icons8-star-50.png'} alt="star" className="star" />
           </div>
           <Link to={`/blogs/${blog.id}`} className="read-more-link">Read More</Link>
         </div>
